@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<script src="http://jqueryjs.googlecode.com/files/jquery-1.2.6.pack.js" type="text/javascript"></script>
+		<script type="text/javascript" src="jquery.select_urls.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				var obj_sel = $('#set').select_urls(
+				[
+					['Fedmich', 'http://fedmich.com/works/'],
+					['About',  'http://fedmich.com/works/about/'],
+					['Services',  'http://fedmich.com/works/services/'],
+				]
+	
+				, function ( url ){
+					url = $.trim(url);
+					if(! url){
+						return false;
+					}
+					$('#frame').attr('src',url);
+				}
+			)
+	
+			});
+		</script>
+		<style type="text/css">
+			body{
+				margin:0px;
+				padding: 0px;
+			}
+			.toph{
+				border-bottom:4px solid #52A9D4;
+				height : 50px;
+			}
+			.toph select{
+				margin-top:10px;
+				margin-left:10px;
+				font-size:18px;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="toph">
+			<select name="set" id="set"></select>
+		</div>
+
+		<div class="frame_bottom">
+			<iframe src="http://fedmich.com/works/" width="100%" noresize="noresize" frameborder="0" id="frame" height="100%" onload="resizeIframe();" ></iframe>
+		</div>
+
+	</body>
+</html>
